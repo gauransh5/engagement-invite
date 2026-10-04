@@ -8,5 +8,5 @@ window.INVITE = {
   place: "EH-178, Opposite District Session Court",
   city: "Civil Lines, Jalandhar, Punjab",
   blessing: "A beautiful beginning to forever",
-  family: "With love from the Bakshi family & the Chawla family",
+  family: "With love, from Bakshi family & Chawla family",
 };
