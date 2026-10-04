@@ -324,14 +324,21 @@ body {
   color: var(--ink-soft);
   line-height: 1.35;
 }
-
 .family {
-  margin: 1.4rem 1.5rem 0;
+  margin: 1.4rem auto 0;
   font-style: italic;
   font-size: 1.02rem;
   color: #f3e6d8;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: center;
+  width: 100%;
+  max-width: 300px;
+  display: block;
+}
+
+.family .family-names {
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .amp {
