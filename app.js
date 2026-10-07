@@ -6,6 +6,8 @@ const pager = document.getElementById("pager");
 const dots = document.getElementById("dots");
 const story = document.getElementById("story");
 const beats = [...document.querySelectorAll(".beat")];
+const backgroundMusic = document.getElementById("background-music");
+const soundToggle = document.getElementById("sound-toggle");
 
 const details = window.INVITE || {};
 document.querySelectorAll("[data-field]").forEach((el) => {
@@ -24,6 +26,12 @@ document.querySelectorAll("[data-name]").forEach((el) => {
   const key = el.dataset.name;
   if (details[key]) el.innerHTML = titledName(details[key]);
 });
+
+function setSoundToggle(isPlaying) {
+  soundToggle.classList.toggle("is-muted", !isPlaying);
+  soundToggle.setAttribute("aria-label", isPlaying ? "Mute background music" : "Play background music");
+  soundToggle.innerHTML = `<span aria-hidden="true">♫</span> Sound ${isPlaying ? "on" : "off"}`;
+}
 
 let page = 0;
 let opened = false;
@@ -123,9 +131,22 @@ function openEnvelope() {
   envelope.removeAttribute("tabindex");
   pager.hidden = false;
   story.style.touchAction = "none";
+  backgroundMusic.play().then(() => setSoundToggle(true)).catch(() => setSoundToggle(false));
   window.setTimeout(() => showBeat(0, { animate: true }), 450);
   syncChrome();
 }
+
+soundToggle.addEventListener("click", (event) => {
+  event.stopPropagation();
+  if (backgroundMusic.paused) {
+    backgroundMusic.play().then(() => {
+      setSoundToggle(true);
+    }).catch(() => {});
+  } else {
+    backgroundMusic.pause();
+    setSoundToggle(false);
+  }
+});
 
 envelope.addEventListener("click", () => {
   if (!opened) openEnvelope();

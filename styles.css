@@ -67,6 +67,33 @@ body {
   pointer-events: none;
 }
 
+.sound-toggle {
+  position: absolute;
+  top: calc(1.25rem + var(--safe-top));
+  right: 1.25rem;
+  z-index: 7;
+  border: 1px solid rgba(201, 176, 154, 0.58);
+  border-radius: 999px;
+  padding: 0.45rem 0.72rem;
+  background: rgba(244, 234, 220, 0.72);
+  color: var(--wine);
+  font-family: "Cinzel", serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sound-toggle.is-muted {
+  opacity: 0.66;
+}
+
+.studio.on-seal .sound-toggle {
+  border-color: rgba(243, 230, 216, 0.52);
+  background: rgba(58, 15, 24, 0.35);
+  color: #f3e6d8;
+}
+
 .studio.is-open .studio-hint {
   color: var(--ink-soft);
   text-shadow: none;
